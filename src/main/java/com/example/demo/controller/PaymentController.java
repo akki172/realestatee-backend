@@ -14,7 +14,10 @@ import com.example.demo.service.ReceiptPdfService;
 
 @RestController
 @RequestMapping("/api/payments")
-@CrossOrigin(origins = "http://localhost:5173")
+@CrossOrigin(origins = {
+	    "http://localhost:5173",
+	    "https://realestatee-two.vercel.app"
+	})
 public class PaymentController {
 
     private final PaymentService paymentService;
