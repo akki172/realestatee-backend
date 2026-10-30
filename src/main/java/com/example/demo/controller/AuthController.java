@@ -13,7 +13,10 @@ import com.example.demo.dto.ResetPasswordRequest;
 
 @RestController
 @RequestMapping("/api/auth")
-@CrossOrigin(origins = "http://localhost:5173")
+@CrossOrigin(origins = {
+	    "http://localhost:5173",
+	    "https://realestatee-two.vercel.app"
+	})
 public class AuthController {
 
     private final AuthService authService;

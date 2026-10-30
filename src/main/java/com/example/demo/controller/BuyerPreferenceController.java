@@ -9,32 +9,28 @@ import com.example.demo.service.BuyerPreferenceService;
 
 @RestController
 @RequestMapping("/api/buyer-preference")
-@CrossOrigin(origins = "http://localhost:5173")
+@CrossOrigin(origins = {
+	    "http://localhost:5173",
+	    "https://realestatee-two.vercel.app"
+	})
 public class BuyerPreferenceController {
 
-    private final BuyerPreferenceService preferenceService;
+	private final BuyerPreferenceService preferenceService;
 
-    public BuyerPreferenceController(
-            BuyerPreferenceService preferenceService) {
+	public BuyerPreferenceController(BuyerPreferenceService preferenceService) {
 
-        this.preferenceService = preferenceService;
-    }
+		this.preferenceService = preferenceService;
+	}
 
-    @PostMapping("/save")
-    public ResponseEntity<BuyerPreferenceResponse> savePreference(
-            @RequestBody BuyerPreferenceRequest request) {
+	@PostMapping("/save")
+	public ResponseEntity<BuyerPreferenceResponse> savePreference(@RequestBody BuyerPreferenceRequest request) {
 
-        return ResponseEntity.ok(
-                preferenceService.savePreference(request)
-        );
-    }
+		return ResponseEntity.ok(preferenceService.savePreference(request));
+	}
 
-    @GetMapping("/{buyerId}")
-    public ResponseEntity<BuyerPreferenceResponse> getPreference(
-            @PathVariable Long buyerId) {
+	@GetMapping("/{buyerId}")
+	public ResponseEntity<BuyerPreferenceResponse> getPreference(@PathVariable Long buyerId) {
 
-        return ResponseEntity.ok(
-                preferenceService.getPreference(buyerId)
-        );
-    }
+		return ResponseEntity.ok(preferenceService.getPreference(buyerId));
+	}
 }
